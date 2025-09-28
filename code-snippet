@@ -1,38 +1,35 @@
 graph TD
     A[Start: User Clicks "GET SMART SUGGESTIONS"] --> B{Gather Inputs: Query, Price Range, Mood, Diet};
     
-    B --> C{Primary Validation: Is Search Term Present?};
+    B --> C{Primary Validation: Is **Specific Dish Name** Present?};
     
-    C -- No (All Inputs Empty) --> D[Display "Please Enter Input" Error];
-    C -- Yes (At least one input) --> E{Is Specific Dish Name Entered?};
+    C -- **No (No Specific Dish)** --> G{Validate Price Inputs (**Min/Max**)};
+    C -- **Yes (Specific Dish)** --> F[**Override Price Filter**: Set Price Range = `0` to `9999`];
     
-    E -- Yes (Override Price) --> F[Set Price Range = 0 to 9999];
-    E -- No (Use Price) --> G{Validate Price Inputs (Min/Max)};
-    
-    G -- Invalid Price --> D;
-    G -- Valid Price --> H[Price Range = User Input/Inferred Mood Default];
+    G -- **Invalid Price** --> D[Display "Invalid Input" Error];
+    G -- **Valid Price** --> H[Price Range = User Input **OR Inferred Mood Default**];
     
     F --> I;
-    H --> I[Filter All Items by: Price Range, Query, Diet Type];
+    H --> I[Filter All Items by: **Price Range**, **Query**, **Diet Type**];
     
-    I --> J[Sort Results by Price (Cheapest First)];
+    I --> J[Sort Results by Price (**Cheapest First**)];
     
-    J --> K{Find Top Pick Candidates (Substantial Meals Only)};
+    J --> K{Identify Top Pick Candidates (**Substantial Meals Only**)};
     
-    K --> L{Is Mood Selected?};
+    K --> L{Is **Mood** Selected?};
     
-    L -- Yes (Spicy/Heavy/etc.) --> M{Find Cheapest Candidate Matching Mood Keywords};
-    L -- No (or No Mood Match) --> N[Select Absolute Cheapest Candidate];
+    L -- **Yes (Spicy/Heavy/Comfort)** --> M{Find Cheapest Candidate Matching **Mood Keywords**};
+    L -- **No (or No Mood Match)** --> N[Select Absolute Cheapest Candidate];
     
     M --> O;
-    N --> O[Final Top Pick(s) Determined];
+    N --> O[Final **Top Pick(s)** Determined];
     
-    O --> P{Output: Render Top Pick Card(s) Prominently};
-    O --> Q[Output: Render Remaining Items (Un-highlighted)];
-    O --> R[Output: Display Online Suggestions/Links];
+    O --> P{Output: Render **Top Pick Card(s) Prominently**};
+    O --> Q[Output: Render Remaining Items (**Sorted, Un-highlighted**)];
+    O --> R[Output: Display **External Online Suggestions/Links**];
     
     P & Q & R --> S[End];
 
-subgraph Smart Logic Focus
-    E; F; G; H; I; K; L; M; N
+subgraph 🎯 Smart Logic Focus
+    C; F; G; H; K; L; M; N
 end
