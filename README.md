@@ -5,7 +5,7 @@
 **Moodie-Foodie** is an **intelligent, mobile-first Single-Page Application (SPA)** designed to optimize food selection for the IIITDM Kurnool community. It transforms the "what to eat?" dilemma into a swift, efficient decision by providing **data-driven, customized, and budget-aware meal suggestions** from campus canteens and the daily Mess schedule.
 
 **Preview Link:**
-* [Moodie-Foodie IIITDM Kurnool] (https://moodie-foodie.netlify.app/)
+* [Moodie-Foodie IIITDM Kurnool](https://moodie-foodie.netlify.app)
 ---
 
 ## 🧠 System Intelligence & Architecture
