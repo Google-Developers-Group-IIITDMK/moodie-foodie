@@ -1,5 +1,3 @@
-Here is the final, professionally formatted `README.md` for your Git repository, ensuring excellent structure and readability.
-
 ***
 
 # 🍽️ Moodie-Foodie: IIITDM Campus Food Recommendation Engine
@@ -45,8 +43,6 @@ Moodie-Foodie utilizes a robust, serverless architecture optimized for speed and
 
 This project was developed by:
 
-* [Sujal Negi](https://www.google.com/search?q=%23insta-sujal)
-* [Aryan Singh](https://www.google.com/search?q=%23insta-aryan)
-* [Ashu Kumar](https://www.google.com/search?q=%23insta-ashu)
-
-*(Note: Placeholder links are currently used in the `index.html` file for demonstration.)*
+* [Sujal Negi](https://www.instagram.com/sujal128005/)
+* [Aryan Singh](https://www.instagram.com/aryan.space_/)
+* [Ashu Kumar](https://www.instagram.com/analogous_ashu/)
