@@ -1,0 +1,38 @@
+graph TD
+    A[Start: User Clicks "GET SMART SUGGESTIONS"] --> B{Gather Inputs: Query, Price Range, Mood, Diet};
+    
+    B --> C{Primary Validation: Is Search Term Present?};
+    
+    C -- No (All Inputs Empty) --> D[Display "Please Enter Input" Error];
+    C -- Yes (At least one input) --> E{Is Specific Dish Name Entered?};
+    
+    E -- Yes (Override Price) --> F[Set Price Range = 0 to 9999];
+    E -- No (Use Price) --> G{Validate Price Inputs (Min/Max)};
+    
+    G -- Invalid Price --> D;
+    G -- Valid Price --> H[Price Range = User Input/Inferred Mood Default];
+    
+    F --> I;
+    H --> I[Filter All Items by: Price Range, Query, Diet Type];
+    
+    I --> J[Sort Results by Price (Cheapest First)];
+    
+    J --> K{Find Top Pick Candidates (Substantial Meals Only)};
+    
+    K --> L{Is Mood Selected?};
+    
+    L -- Yes (Spicy/Heavy/etc.) --> M{Find Cheapest Candidate Matching Mood Keywords};
+    L -- No (or No Mood Match) --> N[Select Absolute Cheapest Candidate];
+    
+    M --> O;
+    N --> O[Final Top Pick(s) Determined];
+    
+    O --> P{Output: Render Top Pick Card(s) Prominently};
+    O --> Q[Output: Render Remaining Items (Un-highlighted)];
+    O --> R[Output: Display Online Suggestions/Links];
+    
+    P & Q & R --> S[End];
+
+subgraph Smart Logic Focus
+    E; F; G; H; I; K; L; M; N
+end
